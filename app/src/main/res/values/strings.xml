@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Finder</string>
+    <string name="hello_world">Hello world</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="click_to_register">Click to register</string>
+    <string name="register">Register</string>
+    <string name="click_to_login">Click to Login</string>
+    <string name="right">Right</string>
+    <string name="left">Left</string>
+    <string name="logout">Logout</string>
+</resources>
