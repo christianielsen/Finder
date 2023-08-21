@@ -276,18 +276,23 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        matchedCardRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        matchedCardRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Boolean currentUserSwipedRight = snapshot.child(user.getUid()).getValue(Boolean.class);
                 Boolean otherUserSwipedRight = snapshot.child(friendId).getValue(Boolean.class);
 
-                if (currentUserSwipedRight != null && currentUserSwipedRight && otherUserSwipedRight != null && otherUserSwipedRight) {
-                    matchTV.setText("Match!");
-                    matchTV.setVisibility(View.VISIBLE);
-                } else {
-                    matchTV.setText("");
-                    matchTV.setVisibility(View.GONE);
+                if (currentUserSwipedRight != null && otherUserSwipedRight != null) {
+                    if (currentUserSwipedRight && otherUserSwipedRight) {
+                        // Both users have swiped right, it's a match!
+                        matchTV.setText("Match! You both swiped on " + snapshot.getKey());
+                        matchTV.setVisibility(View.VISIBLE);
+
+                    } else {
+                        // Not a match
+                        matchTV.setText("");
+                        matchTV.setVisibility(View.GONE);
+                    }
                 }
 
             }
